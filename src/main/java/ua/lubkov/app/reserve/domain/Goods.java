@@ -21,7 +21,7 @@ public class Goods implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="GEN_GOODS_ID")
 	@SequenceGenerator(name="GEN_GOODS_ID", sequenceName="GEN_GOODS_ID")
-    @Column(name = "id")
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name = "name", nullable = false, length = 64)
