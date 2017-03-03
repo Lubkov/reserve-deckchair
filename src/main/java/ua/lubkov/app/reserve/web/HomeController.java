@@ -8,24 +8,21 @@ public class HomeController {
 	
 	@RequestMapping("/index")
 	public String home() {  
-		System.out.println("index");
-		
 		return "index";
-    }
+	}
 	
 	@RequestMapping("/")
-    public String home2() {
-	    return "redirect:/index";
-    } 
+	public String home2() {
+		return "redirect:/index";
+	} 
 	
 	@RequestMapping(value = "/accessDenied")
-    public String accessDenied() {
-
-          return "error403";
-    }
+	public String accessDenied() {
+		return "error403";
+	}
 	
 	@RequestMapping("/admin")
 	public String admin() {  
 		return "admin";
-    }
+	}
 }
