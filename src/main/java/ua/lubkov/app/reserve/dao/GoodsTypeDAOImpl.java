@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import ua.lubkov.app.reserve.domain.Goods;
+import ua.lubkov.app.reserve.domain.GoodsType;
 
 @Repository
 public class GoodsTypeDAOImpl implements GoodsTypeDAO {
@@ -18,27 +18,27 @@ public class GoodsTypeDAOImpl implements GoodsTypeDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<Goods> selectAll() throws Exception {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Goods");
+	public List<GoodsType> selectAll() throws Exception {
+		Query query = sessionFactory.getCurrentSession().createQuery("from GoodsType");
 		
-		return (List<Goods>) query.list();
+		return (List<GoodsType>) query.list();
 	}
 
 	@Override
-	public Goods selectAt(Long id) throws Exception {
-		Goods item = null;
-		Query query = sessionFactory.getCurrentSession().createQuery("from Goods where id = ?");
+	public GoodsType selectAt(Long id) throws Exception {
+		GoodsType item = null;
+		Query query = sessionFactory.getCurrentSession().createQuery("from GoodsType where id = ?");
 		query.setLong(0, id);
 		
 		if (query.list().size() > 0) {
-			item = (Goods) query.list().get(0);
+			item = (GoodsType) query.list().get(0);
 		}
 		
 		return item;
 	}
 
 	@Override
-	public Goods add(Goods item) throws Exception {
+	public GoodsType add(GoodsType item) throws Exception {
 		Long id = (Long) sessionFactory.getCurrentSession().save(item);
 		item.setId(id);
 		
@@ -46,13 +46,13 @@ public class GoodsTypeDAOImpl implements GoodsTypeDAO {
 	}
 
 	@Override
-	public void update(Goods item) throws Exception {
+	public void update(GoodsType item) throws Exception {
 		
 		sessionFactory.getCurrentSession().update(item);
 	}
 
 	@Override
-	public void delete(Goods item) throws Exception {
+	public void delete(GoodsType item) throws Exception {
 		
 		sessionFactory.getCurrentSession().delete(item);
 	}
