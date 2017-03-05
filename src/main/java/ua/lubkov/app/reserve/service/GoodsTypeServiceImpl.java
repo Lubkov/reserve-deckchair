@@ -23,12 +23,14 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public GoodsType getAt(Long id) throws Exception {
 
 		return goodsTypeDAO.selectAt(id);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public GoodsType save(GoodsType item) throws Exception {
 	
 		if (item.getId() == null) {
@@ -41,6 +43,7 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void remove(GoodsType item) throws Exception {
 
 		goodsTypeDAO.delete(item);
