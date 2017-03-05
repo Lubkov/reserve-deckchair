@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +27,10 @@ public class GoodsType implements Serializable {
 	
 	@Column(name = "name", nullable = false, length = 64)
 	private String name = "";
+	
+	@OneToOne
+	@JoinColumn(name = "background_ref")
+	private Background background;
 	
 	public GoodsType() {
 		
@@ -43,6 +50,14 @@ public class GoodsType implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
 	}
 	
 }
